@@ -1,24 +1,26 @@
 # BacenTPF.jl
-A Julia package to get Brazilian Central Bank's (BACEN) government bonds (TPF) trade data
+A Julia package to get Brazilian Central Bank's (BACEN) government bonds (TPF) trade data.
 
-# Usage
+## Usage
 
 It is pretty straightforward!
 You can either download the monthly zip file...
 
 ```julia
-ym = YearMonths.YearMonth(2022,4)
-extragroup_only = true
-BacenTPF.download_tpf_zip_file(ym, extragroup_only, "tpf.zip")
+ym = YearMonths.YearMonth(2022,4) # year month
+extragroup_only = true            # if true, only extragroup trades are considered
+dest = "tpf.zip"                  # destination file
+BacenTPF.download_tpf_zip_file(ym, extragroup_only, dest)
 ```
 
-or have it parsed into a `DataFrame`:
+... or have it parsed into a `DataFrame`:
 
 ```julia
 ym = YearMonths.YearMonth(2022,4)
 extragroup_only = true
 df = BacenTPF.read_trades_tpf(ym, extragroup_only)
 
+df
 # 827×19 DataFrame
 #  Row │ DATA MOV    SIGLA    CODIGO  CODIGO ISIN   EMISSAO     VENCIMENTO  NUM DE OPER  QUANT NEGOCIADA  VALOR NEGOCIADO  PU MIN     PU MED     PU MAX     PU LASTRO  VALOR PAR  TAXA MIN      TAXA MED      TAXA  ⋯
 #      │ Date        String7  Int64   String15      Date        Date        Int64        Int64            Missing          Float64?   Float64?   Float64?   Float64    Float64    Float64?      Float64?      Float ⋯
