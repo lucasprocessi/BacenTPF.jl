@@ -7,6 +7,9 @@ It is pretty straightforward!
 You can either download the monthly zip file...
 
 ```julia
+using YearMonths
+using BacenTPF
+
 ym = YearMonths.YearMonth(2022,4) # year month
 extragroup_only = true            # if true, only extragroup trades are considered
 dest = "tpf.zip"                  # destination file
@@ -16,6 +19,9 @@ BacenTPF.download_tpf_zip_file(ym, extragroup_only, dest)
 ... or have it parsed into a `DataFrame`:
 
 ```julia
+using YearMonths
+using BacenTPF
+
 ym = YearMonths.YearMonth(2022,4)
 extragroup_only = true
 df = BacenTPF.read_trades_tpf(ym, extragroup_only)
